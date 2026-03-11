@@ -1,0 +1,18 @@
+<?php
+class Usuario {
+    protected $nombre;
+    protected $correo;
+
+    public function __construct($nombre, $correo) {
+        // Validación del formato de correo electrónico
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("Error: El correo electrónico '$correo' no es válido.");
+        }
+        $this->nombre = $nombre;
+        $this->correo = $correo;
+    }
+
+    public function getNombre() { return $this->nombre; }
+    public function getCorreo() { return $this->correo; }
+}
+?>
